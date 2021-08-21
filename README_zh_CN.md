@@ -19,7 +19,7 @@ Web Route Spring Book Edition
         <dependency>
             <artifactId>web-route-spring-boot-starter</artifactId>
             <groupId>com.github.thierrysquirrel</groupId>
-            <version>1.0.0.5-RELEASE</version>
+            <version>1.0.0.6-RELEASE</version>
         </dependency>
 ``` 
 

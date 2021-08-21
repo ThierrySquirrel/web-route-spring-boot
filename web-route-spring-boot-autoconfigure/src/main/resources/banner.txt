@@ -9,4 +9,4 @@ ${AnsiColor.BRIGHT_GREEN}
      `\       /'
        `-._.-'
           `
-web-route version:1.0.0.5.RELEASE
+web-route version:1.0.0.6.RELEASE
