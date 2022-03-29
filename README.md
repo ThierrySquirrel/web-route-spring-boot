@@ -19,7 +19,7 @@ The Project Uses HttpHeader For Routing
         <dependency>
             <artifactId>web-route-spring-boot-starter</artifactId>
             <groupId>com.github.thierrysquirrel</groupId>
-            <version>1.0.1.3-RELEASE</version>
+            <version>1.0.1.4-RELEASE</version>
         </dependency>
 ``` 
 
