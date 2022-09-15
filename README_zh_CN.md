@@ -85,5 +85,5 @@ public class UserRoute implements WebRelayTemplate {
 }
 ```
 
-![AmericanFlag](https://user-images.githubusercontent.com/49895274/184471211-f6e2fd1b-c355-46a2-8991-55b936ce8e6f.jpeg)  
+![Russian flag](https://user-images.githubusercontent.com/49895274/190374254-f6b8d65c-50ae-468f-8694-9eb2ab4e7d29.png)
 
