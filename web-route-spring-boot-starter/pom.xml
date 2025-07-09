@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>web-route-spring-boot</artifactId>
-        <groupId>com.github.thierrysquirrel</groupId>
-        <version>1.0.1.4-RELEASE</version>
+        <groupId>io.github.thierrysquirrel</groupId>
+        <version>1.1.0.0-RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -19,7 +19,7 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.thierrysquirrel</groupId>
+            <groupId>io.github.thierrysquirrel</groupId>
             <artifactId>web-route-spring-boot-autoconfigure</artifactId>
         </dependency>
     </dependencies>

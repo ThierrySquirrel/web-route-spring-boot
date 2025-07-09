@@ -1,1 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.github.thierrysquirrel.web.route.autoconfigure.WebRouteAutoConfiguration

@@ -19,7 +19,7 @@ The Project Uses HttpHeader For Routing
         <dependency>
             <artifactId>web-route-spring-boot-starter</artifactId>
             <groupId>com.github.thierrysquirrel</groupId>
-            <version>1.0.1.4-RELEASE</version>
+            <version>1.1.0.0-RELEASE</version>
         </dependency>
 ``` 
 
@@ -30,6 +30,15 @@ The Project Uses HttpHeader For Routing
 web.route.url=127.0.0.1:9090
 web.route.relays[0].header-route-value=userRoute
 web.route.relays[0].relay-bean-name=userRoute
+ ```
+
+ ```http headers
+ ##
+http.headers[0].kay=Web-Route
+http.headers[0].value=userRoute
+
+http.headers[1].kay=offset
+http.headers[1].value=0
  ```
 
 # Start WebRoute
@@ -65,7 +74,7 @@ public class UserRoute implements WebRelayTemplate {
 	@Override
 	public WebRelayMessage relay(HttpRequestMessage httpRequestMessage) {
 		HttpHeaders headers = httpRequestMessage.getHeaders();
-		int offset = Integer.getInteger(headers.get("offset"));
+        int offset = Integer.parseInt(headers.get("offset"));
 		String url = getLocalUrl(offset);
 		headers.add("Hello", "World");
 
