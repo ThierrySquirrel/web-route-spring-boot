@@ -16,7 +16,7 @@
 package io.github.thierrysquirrel.web.route.netty.server.handler.core.factory;
 
 import io.github.thierrysquirrel.web.route.core.template.domain.WebRelayMessage;
-import io.github.thierrysquirrel.web.route.netty.client.init.core.factory.execution.RouteClientAsynchronousRequestExecution;
+import io.github.thierrysquirrel.web.route.netty.client.init.core.factory.execution.RouteClientRequestExecution;
 import io.github.thierrysquirrel.web.route.netty.server.handler.core.factory.domain.RelayHttpRequest;
 import io.github.thierrysquirrel.web.route.netty.server.handler.core.factory.domain.builder.utils.RelayHttpRequestUtils;
 import io.netty.channel.Channel;
@@ -36,6 +36,6 @@ public class RouteFactory {
 	public static void route(String headerRouteKey, RelayHttpRequest request, WebRelayMessage webRelayMessage, int maxContentLength, Channel serverChannel) {
 		String headerRouteValue = request.getHeaders().get(headerRouteKey);
 		var httpRequest = RelayHttpRequestUtils.convertDefaultFullHttpRequest(request);
-		RouteClientAsynchronousRequestExecution.asynchronousRequest(webRelayMessage.getUrl(), maxContentLength, headerRouteValue, httpRequest, serverChannel, webRelayMessage.getRelayErrorMessage());
+		RouteClientRequestExecution.request(webRelayMessage.getUrl(), maxContentLength, headerRouteValue, httpRequest, serverChannel, webRelayMessage.getRelayErrorMessage());
 	}
 }

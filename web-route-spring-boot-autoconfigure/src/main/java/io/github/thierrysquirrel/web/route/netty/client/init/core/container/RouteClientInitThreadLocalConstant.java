@@ -16,9 +16,7 @@
 package io.github.thierrysquirrel.web.route.netty.client.init.core.container;
 
 import io.github.thierrysquirrel.web.route.netty.client.init.RouteClientInit;
-import com.google.common.collect.Maps;
 
-import java.util.Map;
 
 /**
  * ClassName: RouteClientInitThreadLocalConstant
@@ -30,11 +28,15 @@ import java.util.Map;
  */
 public class RouteClientInitThreadLocalConstant {
 
-	private final Map<String, RouteClientInit> routeClientInitMap = Maps.newConcurrentMap();
+	private ThreadLocal<RouteClientInit> routeClientInitMap = new ThreadLocal<>();
 
 	public RouteClientInit getRouteClientInit(String url, int maxContentLength, String headerRouteValue) {
-		String threadName = Thread.currentThread().getName();
-		return routeClientInitMap.computeIfAbsent(threadName, key -> new RouteClientInit(url, maxContentLength, headerRouteValue));
+        RouteClientInit routeClientInit = routeClientInitMap.get();
+        if (routeClientInit == null) {
+            routeClientInit = new RouteClientInit(url, maxContentLength, headerRouteValue);
+            routeClientInitMap.set(routeClientInit);
+        }
+        return routeClientInit;
 	}
 
 }

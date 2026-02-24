@@ -30,7 +30,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 public final class ThreadPoolExecutorConstant {
 
 	public static final ThreadPoolExecutor WEB_ROUTE_SERVER_INIT = ThreadPoolExecutorBuilder.builderWebRouteServerInitThreadPoolExecutor();
-	public static final ThreadPoolExecutor ROUTE_CLIENT_REQUEST = ThreadPoolExecutorBuilder.builderRouteClientRequestThreadPoolExecutor();
 	public static final ThreadPoolExecutor WEB_ROUTE_BUSINESS = ThreadPoolExecutorBuilder.builderWebRouteBusinessThreadPoolExecutor();
 
 	private ThreadPoolExecutorConstant() {

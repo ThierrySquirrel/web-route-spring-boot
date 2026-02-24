@@ -18,7 +18,8 @@ package io.github.thierrysquirrel.web.route.netty.server.init;
 import io.github.thierrysquirrel.web.route.netty.common.utils.SocketAddressUtils;
 import io.github.thierrysquirrel.web.route.netty.server.handler.WebRouteInitializer;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.MultiThreadIoEventLoopGroup;
+import io.netty.channel.nio.NioIoHandler;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
@@ -34,7 +35,7 @@ public class WebRouteInit {
 	}
 	public static void init(String webRouteServerUrl, int maxContentLength, String headerRouteKey) {
 		new ServerBootstrap()
-				.group(new NioEventLoopGroup(), new NioEventLoopGroup())
+				.group(new MultiThreadIoEventLoopGroup(NioIoHandler.newFactory()),new MultiThreadIoEventLoopGroup( NioIoHandler.newFactory()))
 				.channel(NioServerSocketChannel.class)
 				.childHandler(new WebRouteInitializer(maxContentLength, headerRouteKey))
 				.bind(SocketAddressUtils.getInetSocketAddress(webRouteServerUrl));

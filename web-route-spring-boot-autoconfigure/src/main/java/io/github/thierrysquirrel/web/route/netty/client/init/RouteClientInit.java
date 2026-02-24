@@ -53,7 +53,6 @@ public class RouteClientInit {
 		this.maxContentLength = maxContentLength;
 		this.headerRouteValue = headerRouteValue;
 	}
-
 	public DefaultFullHttpResponse request(DefaultFullHttpRequest defaultFullHttpRequest) throws InterruptedException, ExecutionException, TimeoutException {
 		init().writeAndFlush(defaultFullHttpRequest);
 		return response.get(RouteClientInitConstant.REQUEST_TIME_OUT, TimeUnit.MILLISECONDS);
@@ -68,7 +67,7 @@ public class RouteClientInit {
 		if (ChannelUtils.channelIsActive(channel)) {
 			return channel;
 		}
-		channel = new Bootstrap().group(RouteClientEventLoopGroupContainer.getEventLoopGroup(headerRouteValue))
+		channel = new Bootstrap().group(RouteClientEventLoopGroupContainer.getEventLoopGroup(url))
 				.channel(NioSocketChannel.class)
 				.handler(new RouteClientInitializer(this))
 				.connect(SocketAddressUtils.getInetSocketAddress(url))

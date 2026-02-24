@@ -17,7 +17,8 @@ package io.github.thierrysquirrel.web.route.netty.client.init.core.container;
 
 import com.google.common.collect.Maps;
 import io.netty.channel.EventLoopGroup;
-import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.MultiThreadIoEventLoopGroup;
+import io.netty.channel.nio.NioIoHandler;
 
 import java.util.Map;
 
@@ -30,13 +31,19 @@ import java.util.Map;
  * @since JDK 11
  */
 public class RouteClientEventLoopGroupContainer {
-	private static final Map<String, EventLoopGroup> EVENT_LOOP_GROUP_MAP = Maps.newConcurrentMap();
+	private static final Map<String, ThreadLocal<EventLoopGroup>> EVENT_LOOP_GROUP_MAP = Maps.newConcurrentMap();
 
 	private RouteClientEventLoopGroupContainer() {
 	}
 
-	public static EventLoopGroup getEventLoopGroup(String headerRouteValue) {
-		return EVENT_LOOP_GROUP_MAP.computeIfAbsent(headerRouteValue, key -> new NioEventLoopGroup());
+	public static EventLoopGroup getEventLoopGroup(String url) {
+		ThreadLocal<EventLoopGroup> threadLocal = EVENT_LOOP_GROUP_MAP.computeIfAbsent(url, key -> new ThreadLocal<>());
+		EventLoopGroup loopGroup = threadLocal.get();
+		if (loopGroup == null) {
+			loopGroup=new MultiThreadIoEventLoopGroup(1,NioIoHandler.newFactory());
+			threadLocal.set(loopGroup);
+		}
+		return loopGroup;
 	}
 
 }

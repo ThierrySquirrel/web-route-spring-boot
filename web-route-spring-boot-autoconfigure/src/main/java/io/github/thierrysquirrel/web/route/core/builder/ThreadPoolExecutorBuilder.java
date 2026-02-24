@@ -47,18 +47,6 @@ public class ThreadPoolExecutorBuilder {
 		);
 	}
 
-	public static ThreadPoolExecutor builderRouteClientRequestThreadPoolExecutor() {
-		var threadFactory = new ThreadFactoryBuilder()
-				.setNameFormat(ThreadPoolExecutorBuilderConstant.ROUTE_CLIENT_REQUEST).build();
-		return new ThreadPoolExecutor(ThreadPoolExecutorBuilderConstant.ROUTE_CLIENT_REQUEST_CORE_POOL_SIZE,
-				ThreadPoolExecutorBuilderConstant.ROUTE_CLIENT_REQUEST_MAXIMUM_POOL_SIZE,
-				ThreadPoolExecutorBuilderConstant.KEEP_ALIVE_TIME,
-				TimeUnit.MILLISECONDS,
-				new LinkedBlockingQueue<>(),
-				threadFactory
-		);
-	}
-
 	public static ThreadPoolExecutor builderWebRouteBusinessThreadPoolExecutor() {
 		var threadFactory = new ThreadFactoryBuilder()
 				.setNameFormat(ThreadPoolExecutorBuilderConstant.WEB_ROUTE_BUSINESS).build();
